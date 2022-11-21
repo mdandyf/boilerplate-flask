@@ -28,10 +28,9 @@ app.register_blueprint(asset_transaction_handler, url_prefix='/asset/transaction
 
 @app.route('/')
 def flask_app():
-   return ResponseSuccess({ 
-      "status": constants.http_status_ok,
+   return ResponseSuccess([], { 
       "message": messages.flask_message,
-      "version": app.config.from_object(app_config[os.getenv('APP_VERSION')])
+      "version": os.getenv('APP_VERSION')
    }, constants.http_status_ok)
 
 @app.errorhandler(404)
